@@ -14,13 +14,32 @@ const listFactory = () => {
     }
   };
 
-  const toString = () => {
-    if (head) {
-      let string = `( ${head.value} )`;
+  const size = () => {
+    let headNode = head;
 
-      while (head.nextNode) {
-        head = head.nextNode;
-        let nextString = `( ${head.value} )`;
+    if (headNode) {
+      let count = 1;
+
+      while (headNode.nextNode) {
+        count += 1;
+        headNode = headNode.nextNode;
+      }
+
+      return count;
+    } else {
+      return 0;
+    }
+  };
+
+  const toString = () => {
+    let headNode = head;
+
+    if (headNode) {
+      let string = `( ${headNode.value} )`;
+
+      while (headNode.nextNode) {
+        headNode = headNode.nextNode;
+        let nextString = `( ${headNode.value} )`;
         string += " -> " + nextString;
       }
 
@@ -28,7 +47,7 @@ const listFactory = () => {
     }
   };
 
-  return { head, tail, append, toString };
+  return { head, tail, append, size, toString };
 };
 
 function createNode(val) {
@@ -42,3 +61,13 @@ function createNode(val) {
     },
   };
 }
+
+let list = listFactory();
+console.log(list.size());
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.append(5);
+list.toString();
+console.log(list.size());
