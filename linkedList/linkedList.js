@@ -59,7 +59,15 @@ const listFactory = () => {
     }
   };
 
-  return { head, tail, append, prepend, size, toString };
+  const getHead = () => {
+    return head;
+  };
+
+  const getTail = () => {
+    return tail;
+  };
+
+  return { getHead, getTail, append, prepend, size, toString };
 };
 
 function createNode(val) {
@@ -89,3 +97,4 @@ list.prepend(-4);
 list.prepend(-5);
 list.toString();
 console.log(list.size());
+console.log(list.getHead(), list.getTail());
