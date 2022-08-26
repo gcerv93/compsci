@@ -5,11 +5,14 @@ const listFactory = () => {
   return { head, tail };
 };
 
-function createNode() {
+function createNode(val) {
   return {
     nextNode: null,
-    value() {
-      return null;
+
+    value: val,
+
+    getValue() {
+      return value;
     },
   };
 }
