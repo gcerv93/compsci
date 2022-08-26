@@ -1,6 +1,6 @@
 const listFactory = () => {
-  const head = null;
-  const tail = null;
+  let head = null;
+  let tail = null;
 
   const append = (value) => {
     const newNode = createNode(value);
@@ -14,7 +14,21 @@ const listFactory = () => {
     }
   };
 
-  return { head, tail, append };
+  const toString = () => {
+    if (head) {
+      let string = `( ${head.value} )`;
+
+      while (head.nextNode) {
+        head = head.nextNode;
+        let nextString = `( ${head.value} )`;
+        string += " -> " + nextString;
+      }
+
+      console.log(string);
+    }
+  };
+
+  return { head, tail, append, toString };
 };
 
 function createNode(val) {
