@@ -14,6 +14,18 @@ const listFactory = () => {
     }
   };
 
+  const prepend = (value) => {
+    const newNode = createNode(value);
+
+    if (head === null) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.nextNode = head;
+      head = newNode;
+    }
+  };
+
   const size = () => {
     let headNode = head;
 
@@ -47,7 +59,7 @@ const listFactory = () => {
     }
   };
 
-  return { head, tail, append, size, toString };
+  return { head, tail, append, prepend, size, toString };
 };
 
 function createNode(val) {
@@ -64,10 +76,16 @@ function createNode(val) {
 
 let list = listFactory();
 console.log(list.size());
+list.prepend(0);
 list.append(1);
 list.append(2);
 list.append(3);
 list.append(4);
 list.append(5);
+list.prepend(-1);
+list.prepend(-2);
+list.prepend(-3);
+list.prepend(-4);
+list.prepend(-5);
 list.toString();
 console.log(list.size());
