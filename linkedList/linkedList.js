@@ -93,6 +93,21 @@ const listFactory = () => {
     return false;
   };
 
+  const find = (value) => {
+    let list = head;
+    let index = 0;
+
+    while (list) {
+      if (list.value === value) {
+        return index;
+      }
+
+      list = list.nextNode;
+      index += 1;
+    }
+    return null;
+  };
+
   const toString = () => {
     let headNode = head;
 
@@ -127,6 +142,7 @@ const listFactory = () => {
     at,
     pop,
     contains,
+    find,
   };
 };
 
@@ -161,3 +177,4 @@ console.log(list.contains(5)); // false, just got popped off the list
 list.pop();
 console.log(list.toString()); // Last 2 nodes deleted
 console.log(list.contains(0)); // true
+console.log(list.find(3), list.find(0), list.find(-5), list.find(-3)); // 8, 5, 0, 2
