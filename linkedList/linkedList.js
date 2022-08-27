@@ -3,7 +3,7 @@ const listFactory = () => {
   let tail = null;
 
   const append = (value) => {
-    const newNode = createNode(value);
+    const newNode = nodeFactory(value);
 
     if (head === null && tail === null) {
       head = newNode;
@@ -15,7 +15,7 @@ const listFactory = () => {
   };
 
   const prepend = (value) => {
-    const newNode = createNode(value);
+    const newNode = nodeFactory(value);
 
     if (head === null) {
       head = newNode;
@@ -130,15 +130,11 @@ const listFactory = () => {
   };
 };
 
-function createNode(val) {
+function nodeFactory(val) {
   return {
     nextNode: null,
 
     value: val,
-
-    getValue() {
-      return value;
-    },
   };
 }
 
