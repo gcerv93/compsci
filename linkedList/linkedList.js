@@ -79,6 +79,20 @@ const listFactory = () => {
     }
   };
 
+  const contains = (value) => {
+    let list = head;
+
+    while (list) {
+      if (list.value === value) {
+        return true;
+      }
+
+      list = list.nextNode;
+    }
+
+    return false;
+  };
+
   const toString = () => {
     let headNode = head;
 
@@ -103,7 +117,17 @@ const listFactory = () => {
     return tail;
   };
 
-  return { getHead, getTail, append, prepend, size, toString, at, pop };
+  return {
+    getHead,
+    getTail,
+    append,
+    prepend,
+    size,
+    toString,
+    at,
+    pop,
+    contains,
+  };
 };
 
 function createNode(val) {
@@ -137,5 +161,7 @@ console.log(list.toString()); // String of nodes, from -5 to 5
 console.log(list.at(5)); // Node value of 0
 console.log(list.at(12)); // Node not found
 list.pop();
+console.log(list.contains(5)); // false, just got popped off the list
 list.pop();
 console.log(list.toString()); // Last 2 nodes deleted
+console.log(list.contains(0)); // true
