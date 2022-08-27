@@ -215,33 +215,3 @@ function nodeFactory(val) {
     value: val,
   };
 }
-
-let list = listFactory();
-console.log(list.size()); // 0
-list.prepend(0);
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
-list.prepend(-1);
-list.prepend(-2);
-list.prepend(-3);
-list.prepend(-4);
-list.prepend(-5);
-console.log(list.toString()); // String of nodes, from -5 to 5
-// console.log(list.size());
-// console.log(list.getHead(), list.getTail());
-console.log(list.at(5)); // Node value of 0
-console.log(list.at(12)); // Node not found
-list.pop();
-console.log(list.contains(5)); // false, just got popped off the list
-list.pop();
-console.log(list.toString()); // Last 2 nodes deleted
-console.log(list.contains(0)); // true
-console.log(list.find(3), list.find(0), list.find(-5), list.find(-3)); // 8, 5, 0, 2
-list.insertAt(-6, 7);
-console.log(list.toString());
-list.removeAt(5);
-console.log(list.removeAt(111));
-console.log(list.toString());
