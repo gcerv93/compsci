@@ -71,7 +71,7 @@ const listFactory = () => {
         string += " -> " + nextString;
       }
 
-      console.log(string);
+      return string;
     }
   };
 
@@ -111,7 +111,7 @@ list.prepend(-2);
 list.prepend(-3);
 list.prepend(-4);
 list.prepend(-5);
-list.toString();
+console.log(list.toString());
 // console.log(list.size());
 // console.log(list.getHead(), list.getTail());
 console.log(list.at(5));
