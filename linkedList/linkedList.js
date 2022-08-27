@@ -119,7 +119,7 @@ function createNode(val) {
 }
 
 let list = listFactory();
-console.log(list.size());
+console.log(list.size()); // 0
 list.prepend(0);
 list.append(1);
 list.append(2);
@@ -131,11 +131,11 @@ list.prepend(-2);
 list.prepend(-3);
 list.prepend(-4);
 list.prepend(-5);
-console.log(list.toString());
+console.log(list.toString()); // String of nodes, from -5 to 5
 // console.log(list.size());
 // console.log(list.getHead(), list.getTail());
-console.log(list.at(5));
-console.log(list.at(12));
+console.log(list.at(5)); // Node value of 0
+console.log(list.at(12)); // Node not found
 list.pop();
 list.pop();
-console.log(list.toString());
+console.log(list.toString()); // Last 2 nodes deleted
