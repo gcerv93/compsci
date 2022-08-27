@@ -108,6 +108,36 @@ const listFactory = () => {
     return null;
   };
 
+  const insertAt = (value, index) => {
+    const newNode = nodeFactory(value);
+
+    if (index === 0) {
+      newNode.nextNode = head;
+      head = newNode;
+      return;
+    }
+
+    let list = head;
+    let iCount = 0;
+    let prevNode;
+
+    while (list) {
+      if (iCount === index) {
+        prevNode.nextNode = newNode;
+        newNode.nextNode = list;
+        return;
+      } else if (index > find(tail.value)) {
+        tail.nextNode = newNode;
+        tail = newNode;
+        return;
+      }
+
+      prevNode = list;
+      list = list.nextNode;
+      iCount += 1;
+    }
+  };
+
   const toString = () => {
     let headNode = head;
 
@@ -143,6 +173,7 @@ const listFactory = () => {
     pop,
     contains,
     find,
+    insertAt,
   };
 };
 
@@ -178,3 +209,5 @@ list.pop();
 console.log(list.toString()); // Last 2 nodes deleted
 console.log(list.contains(0)); // true
 console.log(list.find(3), list.find(0), list.find(-5), list.find(-3)); // 8, 5, 0, 2
+list.insertAt(-6, 7);
+console.log(list.toString());
