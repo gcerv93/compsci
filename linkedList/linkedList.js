@@ -59,6 +59,26 @@ const listFactory = () => {
     return "Node not found";
   };
 
+  const pop = () => {
+    let headNode = head;
+    let prevNode;
+
+    while (headNode) {
+      if (headNode.nextNode === null) {
+        if (!prevNode) {
+          head = null;
+          tail = null;
+          return;
+        }
+        prevNode.nextNode = null;
+        tail = prevNode;
+      }
+
+      prevNode = headNode;
+      headNode = headNode.nextNode;
+    }
+  };
+
   const toString = () => {
     let headNode = head;
 
@@ -83,7 +103,7 @@ const listFactory = () => {
     return tail;
   };
 
-  return { getHead, getTail, append, prepend, size, toString, at };
+  return { getHead, getTail, append, prepend, size, toString, at, pop };
 };
 
 function createNode(val) {
@@ -116,3 +136,6 @@ console.log(list.toString());
 // console.log(list.getHead(), list.getTail());
 console.log(list.at(5));
 console.log(list.at(12));
+list.pop();
+list.pop();
+console.log(list.toString());
