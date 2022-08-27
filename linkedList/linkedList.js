@@ -138,6 +138,36 @@ const listFactory = () => {
     }
   };
 
+  const removeAt = (index) => {
+    if (index === 0) {
+      head = head.nextNode;
+      return;
+    }
+
+    let list = head;
+    let iCount = 0;
+    let prevNode;
+
+    while (list) {
+      if (iCount === find(tail.value) && iCount === index) {
+        prevNode.nextNode = null;
+        tail = prevNode;
+        return;
+      }
+
+      if (iCount === index) {
+        prevNode.nextNode = list.nextNode;
+        return;
+      }
+
+      prevNode = list;
+      list = list.nextNode;
+      iCount += 1;
+    }
+
+    return "Invalid index";
+  };
+
   const toString = () => {
     let headNode = head;
 
@@ -174,6 +204,7 @@ const listFactory = () => {
     contains,
     find,
     insertAt,
+    removeAt,
   };
 };
 
@@ -210,4 +241,7 @@ console.log(list.toString()); // Last 2 nodes deleted
 console.log(list.contains(0)); // true
 console.log(list.find(3), list.find(0), list.find(-5), list.find(-3)); // 8, 5, 0, 2
 list.insertAt(-6, 7);
+console.log(list.toString());
+list.removeAt(5);
+console.log(list.removeAt(111));
 console.log(list.toString());
