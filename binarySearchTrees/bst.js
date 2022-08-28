@@ -5,3 +5,9 @@ const nodeFactory = (data) => {
     rightChild: null,
   };
 };
+
+const treeFactory = (array) => {
+  return {
+    root: buildTree(),
+  };
+};
