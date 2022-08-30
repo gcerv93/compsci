@@ -39,8 +39,34 @@ const treeFactory = (array) => {
     return root;
   };
 
+  const insertNode = (value) => {
+    const newNode = nodeFactory(value);
+
+    let tree = root;
+    while (tree) {
+      if (value > tree.data) {
+        if (tree.right === null) {
+          tree.right = newNode;
+          return;
+        } else {
+          tree = tree.right;
+        }
+      } else if (value < tree.data) {
+        if (tree.left === null) {
+          tree.left = newNode;
+          return;
+        } else {
+          tree = tree.left;
+        }
+      }
+    }
+  };
+
+  const root = buildTree(array);
+
   return {
-    root: buildTree(array),
+    root,
+    insertNode,
   };
 };
 
@@ -59,4 +85,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 let tree = treeFactory([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 
+prettyPrint(tree.root);
+tree.insertNode(24);
 prettyPrint(tree.root);
