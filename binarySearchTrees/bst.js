@@ -48,16 +48,16 @@ const treeFactory = (array) => {
         if (tree.right === null) {
           tree.right = newNode;
           return;
-        } else {
-          tree = tree.right;
         }
+
+        tree = tree.right;
       } else if (value < tree.data) {
         if (tree.left === null) {
           tree.left = newNode;
           return;
-        } else {
-          tree = tree.left;
         }
+
+        tree = tree.left;
       }
     }
   };
@@ -87,4 +87,5 @@ let tree = treeFactory([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 
 prettyPrint(tree.root);
 tree.insertNode(24);
+tree.insertNode(22);
 prettyPrint(tree.root);
