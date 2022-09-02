@@ -62,11 +62,24 @@ const treeFactory = (array) => {
     }
   };
 
+  const find = (value) => {
+    let tree = root;
+
+    while (tree) {
+      if (tree.data == value) return tree;
+
+      value > tree.data ? (tree = tree.right) : (tree = tree.left);
+    }
+
+    return "Node not found";
+  };
+
   const root = buildTree(array);
 
   return {
     root,
     insertNode,
+    find,
   };
 };
 
@@ -89,3 +102,5 @@ prettyPrint(tree.root);
 tree.insertNode(24);
 tree.insertNode(22);
 prettyPrint(tree.root);
+console.log(tree.find(6345));
+console.log(tree.find(6347)); // Node not found
