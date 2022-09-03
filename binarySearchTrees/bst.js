@@ -60,6 +60,31 @@ const treeFactory = (array) => {
     }
   };
 
+  const deleteNode = (value) => {
+    let tree = root;
+    let prev;
+
+    while (tree) {
+      if (tree.data === value) {
+        if (tree.right === null && tree.left === null) {
+          if (prev.left === tree) {
+            prev.left = null;
+          } else if (prev.right === tree) {
+            prev.right = null;
+          }
+        }
+      }
+
+      prev = tree;
+
+      if (value > tree.data) {
+        tree = tree.right;
+      } else {
+        tree = tree.left;
+      }
+    }
+  };
+
   const find = (value) => {
     let tree = root;
 
@@ -78,6 +103,7 @@ const treeFactory = (array) => {
     root,
     insertNode,
     find,
+    deleteNode,
   };
 };
 
@@ -102,3 +128,6 @@ tree.insertNode(22);
 prettyPrint(tree.root);
 console.log(tree.find(6345));
 console.log(tree.find(6347)); // Node not found
+tree.deleteNode(6345);
+tree.deleteNode(22);
+prettyPrint(tree.root);
