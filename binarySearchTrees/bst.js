@@ -23,9 +23,7 @@ const treeFactory = (array) => {
   const buildTree = (arr) => {
     let arrSorted = sortAndRemoveDups(arr);
 
-    if (arrSorted.length === 0) {
-      return null;
-    }
+    if (arrSorted.length === 0) return null;
 
     let start = 0;
     let end = arrSorted.length - 1;
