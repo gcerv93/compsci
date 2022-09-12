@@ -65,7 +65,15 @@ const treeFactory = (array) => {
     let prev;
 
     while (tree) {
-      if (tree.data === value) {
+      if (value > tree.data) {
+        prev = tree;
+
+        tree = tree.right;
+      } else if (value < tree.data) {
+        prev = tree;
+
+        tree = tree.left;
+      } else {
         if (tree.right === null && tree.left === null) {
           if (prev.left === tree) {
             prev.left = null;
@@ -73,14 +81,8 @@ const treeFactory = (array) => {
             prev.right = null;
           }
         }
-      }
 
-      prev = tree;
-
-      if (value > tree.data) {
-        tree = tree.right;
-      } else {
-        tree = tree.left;
+        tree = null;
       }
     }
   };
