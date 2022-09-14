@@ -80,6 +80,12 @@ const treeFactory = (array) => {
           } else if (prev.right === tree) {
             prev.right = null;
           }
+        } else if (tree.right === null) {
+          tree.data = tree.left.data;
+          tree.left = null;
+        } else if (tree.left === null) {
+          tree.data = tree.right.data;
+          tree.right = null;
         }
 
         tree = null;
@@ -132,4 +138,8 @@ console.log(tree.find(6345));
 console.log(tree.find(6347)); // Node not found
 tree.deleteNode(6345);
 tree.deleteNode(22);
+tree.deleteNode(5); // works with right child
+
+tree.insertNode(323);
+tree.deleteNode(324); // works with left child
 prettyPrint(tree.root);
