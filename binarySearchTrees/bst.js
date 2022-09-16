@@ -93,33 +93,6 @@ const treeFactory = (array) => {
     }
   };
 
-  // iterative
-  const levelOrder = (func) => {
-    let tree = root;
-    let queue = [tree];
-    let result = [];
-
-    while (tree) {
-      result.push(tree.data);
-
-      if (tree.left) {
-        queue.push(tree.left);
-      }
-      if (tree.right) {
-        queue.push(tree.right);
-      }
-
-      queue.shift();
-      if (queue.length === 0) {
-        tree = null;
-      } else {
-        tree = queue[0];
-      }
-    }
-
-    return result;
-  };
-
   const find = (value) => {
     let tree = root;
 
@@ -130,6 +103,31 @@ const treeFactory = (array) => {
     }
 
     return "Node not found";
+  };
+
+  // iterative
+  const levelOrder = (func) => {
+    let tree = root;
+    let queue = [tree];
+    let result = [];
+
+    while (tree) {
+      if (func) {
+        result.push(func(tree.data));
+      } else {
+        result.push(tree.data);
+      }
+
+      if (tree.left) queue.push(tree.left);
+
+      if (tree.right) queue.push(tree.right);
+
+      queue.shift();
+
+      queue.length === 0 ? (tree = null) : (tree = queue[0]);
+    }
+
+    return result;
   };
 
   const root = buildTree(array);
@@ -172,3 +170,6 @@ tree.insertNode(323);
 tree.deleteNode(324); // works with left child
 prettyPrint(tree.root);
 console.log(tree.levelOrder());
+
+const funFunction = (x) => x * 5;
+console.log(tree.levelOrder(funFunction));
