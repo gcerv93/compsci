@@ -150,6 +150,16 @@ const treeFactory = (array) => {
     return result;
   };
 
+  const postorder = (tree, result = []) => {
+    if (tree === null) return;
+
+    postorder(tree.left, result);
+    postorder(tree.right, result);
+    result.push(tree.data);
+
+    return result;
+  };
+
   const root = buildTree(array);
 
   return {
@@ -160,6 +170,7 @@ const treeFactory = (array) => {
     levelOrder,
     inorder,
     preorder,
+    postorder,
   };
 };
 
@@ -197,3 +208,4 @@ const funFunction = (x) => x * 5;
 console.log(tree.levelOrder(funFunction));
 console.log(tree.inorder(tree.root));
 console.log(tree.preorder(tree.root));
+console.log(tree.postorder(tree.root));
