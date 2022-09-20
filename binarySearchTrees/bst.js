@@ -140,12 +140,12 @@ const treeFactory = (array) => {
     return result;
   };
 
-  const preorder = (tree, result = []) => {
+  const preorder = (tree, func, result = []) => {
     if (tree === null) return;
 
-    result.push(tree.data);
-    preorder(tree.left, result);
-    preorder(tree.right, result);
+    func ? result.push(func(tree.data)) : result.push(tree.data);
+    preorder(tree.left, func, result);
+    preorder(tree.right, func, result);
 
     return result;
   };
@@ -209,4 +209,5 @@ console.log(tree.levelOrder(funFunction));
 console.log(tree.inorder(tree.root));
 console.log(tree.inorder(tree.root, funFunction));
 console.log(tree.preorder(tree.root));
+console.log(tree.preorder(tree.root, funFunction));
 console.log(tree.postorder(tree.root));
