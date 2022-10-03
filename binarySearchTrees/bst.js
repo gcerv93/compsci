@@ -82,10 +82,30 @@ const treeFactory = (array) => {
           }
         } else if (tree.right === null) {
           tree.data = tree.left.data;
-          tree.left = null;
+          tree.left = tree.left.left;
         } else if (tree.left === null) {
           tree.data = tree.right.data;
-          tree.right = null;
+          tree.right = tree.right.right;
+        } else {
+          let inorderSuccessor;
+          let rightChild = tree.right;
+          let parent = rightChild;
+
+          while (rightChild) {
+            if (rightChild.left !== null) {
+              rightChild = rightChild.left;
+            } else {
+              inorderSuccessor = rightChild;
+              if (inorderSuccessor.right) {
+                parent.left = inorderSuccessor.right;
+              } else if (inorderSuccessor.right === null) {
+                tree.right = null;
+              }
+              rightChild = null;
+            }
+          }
+
+          tree.data = inorderSuccessor.data;
         }
 
         tree = null;
@@ -219,3 +239,7 @@ console.log(tree.preorder(tree.root, funFunction));
 console.log("Postorder: ");
 console.log(tree.postorder(tree.root));
 console.log(tree.postorder(tree.root, funFunction));
+
+prettyPrint(tree.root);
+tree.deleteNode(8);
+prettyPrint(tree.root);
