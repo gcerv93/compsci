@@ -205,10 +205,17 @@ prettyPrint(tree.root);
 console.log(tree.levelOrder());
 
 const funFunction = (x) => x * 5;
+console.log("Level Order: ");
 console.log(tree.levelOrder(funFunction));
+
+console.log("Inorder: ");
 console.log(tree.inorder(tree.root));
 console.log(tree.inorder(tree.root, funFunction));
+
+console.log("Preorder: ");
 console.log(tree.preorder(tree.root));
 console.log(tree.preorder(tree.root, funFunction));
+
+console.log("Postorder: ");
 console.log(tree.postorder(tree.root));
 console.log(tree.postorder(tree.root, funFunction));
