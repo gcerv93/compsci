@@ -202,6 +202,22 @@ const treeFactory = (array) => {
     }
   };
 
+  const isBalanced = (tree) => {
+    if (tree === null) return 1;
+
+    let leftHeight = height(tree.left);
+    let rightHeight = height(tree.right);
+
+    if (
+      leftHeight - rightHeight <= 1 &&
+      isBalanced(tree.left) &&
+      isBalanced(tree.right)
+    )
+      return true;
+
+    return false;
+  };
+
   const root = buildTree(array);
 
   return {
@@ -215,6 +231,7 @@ const treeFactory = (array) => {
     postorder,
     height,
     depth,
+    isBalanced,
   };
 };
 
@@ -270,3 +287,8 @@ prettyPrint(tree.root);
 
 console.log("Height:", tree.height(tree.root));
 console.log("Depth: ", tree.depth(tree.root));
+
+console.log(tree.isBalanced(tree.root));
+tree.insertNode(25);
+prettyPrint(tree.root);
+console.log(tree.isBalanced(tree.root));
