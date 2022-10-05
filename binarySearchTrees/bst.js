@@ -189,6 +189,19 @@ const treeFactory = (array) => {
     return Math.max(leftHeight, rightHeight) + 1;
   };
 
+  const depth = (node) => {
+    let nodeDepth = 0;
+    let tree = root;
+
+    while (tree) {
+      if (tree === node) return nodeDepth;
+
+      node.data > tree.data ? (tree = tree.right) : (tree = tree.left);
+
+      nodeDepth += 1;
+    }
+  };
+
   const root = buildTree(array);
 
   return {
@@ -201,6 +214,7 @@ const treeFactory = (array) => {
     preorder,
     postorder,
     height,
+    depth,
   };
 };
 
@@ -255,3 +269,4 @@ tree.deleteNode(8);
 prettyPrint(tree.root);
 
 console.log("Height:", tree.height(tree.root));
+console.log("Depth: ", tree.depth(tree.root));
