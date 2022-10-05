@@ -180,6 +180,15 @@ const treeFactory = (array) => {
     return result;
   };
 
+  const height = (tree) => {
+    if (tree === null) return -1;
+
+    let leftHeight = height(tree.left);
+    let rightHeight = height(tree.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
+  };
+
   const root = buildTree(array);
 
   return {
@@ -191,6 +200,7 @@ const treeFactory = (array) => {
     inorder,
     preorder,
     postorder,
+    height,
   };
 };
 
@@ -243,3 +253,5 @@ console.log(tree.postorder(tree.root, funFunction));
 prettyPrint(tree.root);
 tree.deleteNode(8);
 prettyPrint(tree.root);
+
+console.log("Height:", tree.height(tree.root));
