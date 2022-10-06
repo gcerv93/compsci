@@ -241,9 +241,6 @@ const treeFactory = (array) => {
   };
 };
 
-// array data for tree
-// [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
-
 const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (node.right !== null) {
     prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
@@ -255,51 +252,3 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 let tree = treeFactory([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-
-prettyPrint(tree.root);
-tree.insertNode(24);
-tree.insertNode(22);
-prettyPrint(tree.root);
-console.log(tree.find(6345));
-console.log(tree.find(6347)); // Node not found
-tree.deleteNode(6345);
-tree.deleteNode(22);
-tree.deleteNode(5); // works with right child
-
-tree.insertNode(323);
-tree.deleteNode(324); // works with left child
-prettyPrint(tree.root);
-console.log(tree.levelOrder());
-
-const funFunction = (x) => x * 5;
-console.log("Level Order: ");
-console.log(tree.levelOrder(funFunction));
-
-console.log("Inorder: ");
-console.log(tree.inorder(tree.root));
-console.log(tree.inorder(tree.root, funFunction));
-
-console.log("Preorder: ");
-console.log(tree.preorder(tree.root));
-console.log(tree.preorder(tree.root, funFunction));
-
-console.log("Postorder: ");
-console.log(tree.postorder(tree.root));
-console.log(tree.postorder(tree.root, funFunction));
-
-prettyPrint(tree.root);
-tree.deleteNode(8);
-prettyPrint(tree.root);
-
-console.log("Height:", tree.height(tree.root));
-console.log("Depth: ", tree.depth(tree.root));
-
-console.log(tree.isBalanced(tree.root));
-tree.insertNode(25);
-tree.insertNode(26);
-tree.insertNode(27);
-prettyPrint(tree.root);
-console.log(tree.isBalanced(tree.root));
-
-tree.rebalance(tree);
-prettyPrint(tree.root);
