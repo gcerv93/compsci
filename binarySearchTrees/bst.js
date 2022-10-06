@@ -218,7 +218,12 @@ const treeFactory = (array) => {
     return false;
   };
 
-  const root = buildTree(array);
+  const rebalance = (tree) => {
+    let treeArray = inorder(tree.root);
+    tree.root = buildTree(treeArray);
+  };
+
+  let root = buildTree(array);
 
   return {
     root,
@@ -232,6 +237,7 @@ const treeFactory = (array) => {
     height,
     depth,
     isBalanced,
+    rebalance,
   };
 };
 
@@ -290,5 +296,10 @@ console.log("Depth: ", tree.depth(tree.root));
 
 console.log(tree.isBalanced(tree.root));
 tree.insertNode(25);
+tree.insertNode(26);
+tree.insertNode(27);
 prettyPrint(tree.root);
 console.log(tree.isBalanced(tree.root));
+
+tree.rebalance(tree);
+prettyPrint(tree.root);
