@@ -252,3 +252,49 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 let tree = treeFactory([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+prettyPrint(tree.root);
+
+console.log("Balanced:", tree.isBalanced(tree.root));
+console.log();
+
+console.log("Level:", tree.levelOrder());
+console.log();
+
+console.log("Pre:", tree.preorder(tree.root));
+console.log();
+
+console.log("Post:", tree.postorder(tree.root));
+console.log();
+
+console.log("In:", tree.inorder(tree.root));
+console.log();
+
+tree.insertNode(200);
+tree.insertNode(500);
+tree.insertNode(356);
+tree.insertNode(499);
+prettyPrint(tree.root);
+
+console.log();
+
+console.log("Balanced:", tree.isBalanced(tree.root));
+console.log();
+
+tree.rebalance(tree);
+prettyPrint(tree.root);
+console.log();
+
+console.log("Balanced:", tree.isBalanced(tree.root));
+console.log();
+
+console.log("Level:", tree.levelOrder());
+console.log();
+
+console.log("Pre:", tree.preorder(tree.root));
+console.log();
+
+console.log("Post:", tree.postorder(tree.root));
+console.log();
+
+console.log("In:", tree.inorder(tree.root));
+console.log();
